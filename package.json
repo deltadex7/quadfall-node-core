@@ -1,0 +1,19 @@
+{
+  "name": "quadfall-node-code",
+  "version": "0.0.1",
+  "description": "Node (aka Puyo) implementation for Quadfall",
+  "main": "index.js",
+  "author": "Delta Dextra",
+  "license": "MIT",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.1.0",
+    "@typescript-eslint/parser": "^4.1.0",
+    "eslint": "^7.8.1",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.1.1",
+    "ts-node": "^9.0.0",
+    "typedoc": "^0.19.1",
+    "typescript": "^4.0.2"
+  }
+}
