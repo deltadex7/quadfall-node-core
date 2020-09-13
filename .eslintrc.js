@@ -18,6 +18,7 @@ module.exports = {
   },
   rules: {
     "@typescript-eslint/no-angle-bracket-type-assertion": "off",
+    "@typescript-eslint/no-inferrable-types": "off",
     "prettier/prettier": [
       "error",
       {
