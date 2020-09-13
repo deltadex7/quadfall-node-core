@@ -1,5 +1,5 @@
 {
-  "name": "quadfall-node-code",
+  "name": "quadfall-node-core",
   "version": "0.0.1",
   "description": "Node (aka Puyo) implementation for Quadfall",
   "main": "index.js",
