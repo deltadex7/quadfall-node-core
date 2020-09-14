@@ -6,8 +6,18 @@ const testNode1 = new Node()
 
 testNode1.type = NodeType.COLOR
 testNode1.color = 0
+const dirsArgs = [Directions.UP, Directions.RIGHT]
+testNode1.connections = dirsArgs
 
-assert.strictEqual(testNode1.isColored(), true)
+assert.ok(testNode1.isColored())
+assert.ok(!testNode1.isEmpty())
+assert.deepStrictEqual(testNode1.connections, dirsArgs)
+assert.strictEqual(testNode1.puyoShortCode, "R")
 
-testNode1.connections = [Directions.UP, Directions.RIGHT]
-assert.strictEqual(testNode1.connected, Directions.UP | Directions.RIGHT)
+testNode1.type = NodeType.DUMP
+testNode1.hardness = 1
+
+assert.ok(!testNode1.isColored())
+assert.ok(testNode1.isDumped())
+assert.ok(testNode1.isHardDump())
+assert.deepStrictEqual(testNode1.connections, [])

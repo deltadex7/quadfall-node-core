@@ -80,8 +80,10 @@ export class Node {
   /** Next position of the node, used to handle animations. */
   nextCoords: Coordinates = { x: this.coords.x, y: this.coords.y }
 
-  /** Bitfield that takes [[Directions]] to connected nodes. */
-  connected: number = 0
+  /** Bitfield that takes [[Directions]] to connected nodes.
+   * Not exposed by default.
+   */
+  private connected: number = 0
 
   /**
    * Check if the node is empty.
@@ -167,10 +169,15 @@ export class Node {
   /** Get a fully mapped direction of where the node connects to. */
   get connections(): Directions[] {
     const dirs: Directions[] = []
-    if (this.connected & Directions.UP) dirs.push(Directions.UP)
-    if (this.connected & Directions.DOWN) dirs.push(Directions.DOWN)
-    if (this.connected & Directions.LEFT) dirs.push(Directions.LEFT)
-    if (this.connected & Directions.RIGHT) dirs.push(Directions.RIGHT)
+
+    // Only connect if it's a color node
+    if (this.isColored()) {
+      if (this.connected & Directions.UP) dirs.push(Directions.UP)
+      if (this.connected & Directions.DOWN) dirs.push(Directions.DOWN)
+      if (this.connected & Directions.LEFT) dirs.push(Directions.LEFT)
+      if (this.connected & Directions.RIGHT) dirs.push(Directions.RIGHT)
+    }
+
     return dirs
   }
 
