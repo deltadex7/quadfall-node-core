@@ -179,7 +179,7 @@ export class Node {
    * @param val Map of directions
    */
   set connections(val: Directions[]) {
-    val.map((dir) => (this.connected &= dir))
+    val.map((dir) => (this.connected |= dir))
   }
 
   /**

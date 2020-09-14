@@ -9,9 +9,11 @@
     "compile": "tsc",
     "doc": "typedoc",
     "lint": "eslint",
-    "build": "npm run lint && npm run compile && npm run doc"
+    "build": "npm run lint && npm run compile && npm run doc",
+    "test": "ts-node ./src/tests/test.ts"
   },
   "devDependencies": {
+    "@types/node": "^14.10.1",
     "@typescript-eslint/eslint-plugin": "^4.1.0",
     "@typescript-eslint/parser": "^4.1.0",
     "eslint": "^7.8.1",
