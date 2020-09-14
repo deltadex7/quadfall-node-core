@@ -72,7 +72,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>A single unit element representation of Node</p>
+						<p>A single unit element representation of Node.</p>
 					</div>
 				</div>
 			</section>
@@ -92,20 +92,34 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_node_.node.html#color" class="tsd-kind-icon">color</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_node_.node.html#connected" class="tsd-kind-icon">connected</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_node_.node.html#erase" class="tsd-kind-icon">erase</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_node_.node.html#freeze" class="tsd-kind-icon">freeze</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_node_.node.html#hardness" class="tsd-kind-icon">hardness</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_node_.node.html#item" class="tsd-kind-icon">item</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_node_.node.html#point" class="tsd-kind-icon">point</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_node_.node.html#type" class="tsd-kind-icon">type</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
+							<h3>Accessors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-accessor tsd-parent-kind-class"><a href="_node_.node.html#connections" class="tsd-kind-icon">connections</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_node_.node.html#puyoshortcode" class="tsd-kind-icon">puyo<wbr>Short<wbr>Code</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_node_.node.html#isblock" class="tsd-kind-icon">is<wbr>Block</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_node_.node.html#iscolored" class="tsd-kind-icon">is<wbr>Colored</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_node_.node.html#iscorrupted" class="tsd-kind-icon">is<wbr>Corrupted</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_node_.node.html#isdumped" class="tsd-kind-icon">is<wbr>Dumped</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_node_.node.html#isempty" class="tsd-kind-icon">is<wbr>Empty</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_node_.node.html#isfrozen" class="tsd-kind-icon">is<wbr>Frozen</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_node_.node.html#isharddump" class="tsd-kind-icon">is<wbr>Hard<wbr>Dump</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_node_.node.html#iscolored-1" class="tsd-kind-icon">is<wbr>Colored</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_node_.node.html#isitem" class="tsd-kind-icon">is<wbr>Item</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_node_.node.html#ispower" class="tsd-kind-icon">is<wbr>Power</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -126,7 +140,7 @@
 					<div class="tsd-signature tsd-kind-icon">color<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in node.ts:37</li>
+							<li>Defined in node.ts:51</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -134,6 +148,45 @@
 							<p>Node color.</p>
 						</div>
 						<p>Applies only when <a href="_node_.node.html#type">type</a> is <a href="../enums/_node_.nodetype.html#color">NodeType.COLOR</a></p>
+						<p>Common convention follows Puyo Puyo color cycle:</p>
+						<ul>
+							<li>Red = 0</li>
+							<li>Green = 1</li>
+							<li>Blue = 2</li>
+							<li>Yellow = 3</li>
+							<li>Purple = 4</li>
+						</ul>
+						<p>More colors may be specified independently from here.</p>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="connected" class="tsd-anchor"></a>
+					<h3>connected</h3>
+					<div class="tsd-signature tsd-kind-icon">connected<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in node.ts:84</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Bitfield that takes <a href="../enums/_utils_.directions.html">Directions</a> to connected nodes.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="erase" class="tsd-anchor"></a>
+					<h3>erase</h3>
+					<div class="tsd-signature tsd-kind-icon">erase<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in node.ts:69</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>A mark of node to be removed/erased</p>
+						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
@@ -142,7 +195,7 @@
 					<div class="tsd-signature tsd-kind-icon">freeze<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in node.ts:40</li>
+							<li>Defined in node.ts:54</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -157,7 +210,7 @@
 					<div class="tsd-signature tsd-kind-icon">hardness<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in node.ts:46</li>
+							<li>Defined in node.ts:60</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -168,12 +221,28 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="item" class="tsd-anchor"></a>
+					<h3>item</h3>
+					<div class="tsd-signature tsd-kind-icon">item<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;&quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in node.ts:75</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>An item associated with the node.</p>
+						</div>
+						<p>Effective only when <a href="_node_.node.html#type">type</a> is <a href="../enums/_node_.nodetype.html#power">NodeType.POWER</a></p>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="point" class="tsd-anchor"></a>
 					<h3>point</h3>
 					<div class="tsd-signature tsd-kind-icon">point<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 10</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in node.ts:52</li>
+							<li>Defined in node.ts:66</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -189,7 +258,7 @@
 					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <a href="../enums/_node_.nodetype.html" class="tsd-signature-type">NodeType</a><span class="tsd-signature-symbol"> = NodeType.NONE</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in node.ts:31</li>
+							<li>Defined in node.ts:36</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -200,7 +269,109 @@
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Accessors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class">
+					<a name="connections" class="tsd-anchor"></a>
+					<h3>connections</h3>
+					<ul class="tsd-signatures tsd-kind-accessor tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> connections<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../enums/_utils_.directions.html" class="tsd-signature-type">Directions</a><span class="tsd-signature-symbol">[]</span></li>
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">set</span> connections<span class="tsd-signature-symbol">(</span>val<span class="tsd-signature-symbol">: </span><a href="../enums/_utils_.directions.html" class="tsd-signature-type">Directions</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in node.ts:168</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get a fully mapped direction of where the node connects to.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="../enums/_utils_.directions.html" class="tsd-signature-type">Directions</a><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in node.ts:181</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Set a direction map of where the node connects to.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>val: <a href="../enums/_utils_.directions.html" class="tsd-signature-type">Directions</a><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Map of directions</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="puyoshortcode" class="tsd-anchor"></a>
+					<h3>puyo<wbr>Short<wbr>Code</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> puyoShortCode<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in node.ts:198</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Single-character node value under Puyo Puyo convention.</p>
+								</div>
+								<p>There are limitations when using this:</p>
+								<ul>
+									<li>Only 5 colors are supported.</li>
+									<li>Item nodes will be treated as Power (Sun) nodes</li>
+								</ul>
+								<p>Refer to
+									[<a href="https://github.com/s2lsoftener/s2-puyosim-core/blob/master/src/Puyo.ts#L1%5D">https://github.com/s2lsoftener/s2-puyosim-core/blob/master/src/Puyo.ts#L1]</a>(@S2LSOFTENER&#39;s documentation)
+								for details.</p>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>Single character string representing a node.</p>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="isblock" class="tsd-anchor"></a>
+					<h3>is<wbr>Block</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Block<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in node.ts:145</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Check if the node is actually a block.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<p>Is the node type a block?</p>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="iscolored" class="tsd-anchor"></a>
 					<h3>is<wbr>Colored</h3>
@@ -211,10 +382,39 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in node.ts:58</li>
+									<li>Defined in node.ts:100</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Check if the node is colored.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<p>Is the node type a color node?</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="iscorrupted" class="tsd-anchor"></a>
+					<h3>is<wbr>Corrupted</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Corrupted<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in node.ts:136</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Check if the node is corrupted.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<p>Is the node type corrupt?</p>
 						</li>
 					</ul>
 				</section>
@@ -228,10 +428,39 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in node.ts:66</li>
+									<li>Defined in node.ts:109</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Check if the node is a dump/garbage.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<p>Is the node type a dump?</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="isempty" class="tsd-anchor"></a>
+					<h3>is<wbr>Empty</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Empty<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in node.ts:91</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Check if the node is empty.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<p>Is the node type empty?</p>
 						</li>
 					</ul>
 				</section>
@@ -245,10 +474,16 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in node.ts:74</li>
+									<li>Defined in node.ts:127</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Check if the node is frozen.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<p>Is node&#39;s freeze value above zero?</p>
 						</li>
 					</ul>
 				</section>
@@ -262,33 +497,62 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in node.ts:70</li>
+									<li>Defined in node.ts:118</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Check if the node is a hard dump/garbage.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<p>Is it a dump node and has hardness value above zero?</p>
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
-					<a name="iscolored-1" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> is<wbr>Colored</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">is<wbr>Colored<span class="tsd-signature-symbol">(</span>n<span class="tsd-signature-symbol">: </span><a href="_node_.node.html" class="tsd-signature-type">Node</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="isitem" class="tsd-anchor"></a>
+					<h3>is<wbr>Item</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Item<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in node.ts:62</li>
+									<li>Defined in node.ts:163</li>
 								</ul>
 							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>n: <a href="_node_.node.html" class="tsd-signature-type">Node</a></h5>
-								</li>
-							</ul>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Check if the node is an item node.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<p>Is the node type power and has any associated item?</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="ispower" class="tsd-anchor"></a>
+					<h3>is<wbr>Power</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Power<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in node.ts:154</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Check if the node is a power node.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<p>Is the node type power and has no associated item?</p>
 						</li>
 					</ul>
 				</section>
@@ -301,16 +565,21 @@
 					<div class="tsd-signature tsd-kind-icon">coords<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in node.ts:54</li>
+							<li>Defined in node.ts:78</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Current position of the node.</p>
+						</div>
+					</div>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
 						<a name="coords.x" class="tsd-anchor"></a>
 						<h3>x</h3>
 						<div class="tsd-signature tsd-kind-icon">x<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in node.ts:54</li>
+								<li>Defined in node.ts:78</li>
 							</ul>
 						</aside>
 					</section>
@@ -320,7 +589,7 @@
 						<div class="tsd-signature tsd-kind-icon">y<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in node.ts:54</li>
+								<li>Defined in node.ts:78</li>
 							</ul>
 						</aside>
 					</section>
@@ -331,16 +600,21 @@
 					<div class="tsd-signature tsd-kind-icon">next<wbr>Coords<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in node.ts:56</li>
+							<li>Defined in node.ts:81</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Next position of the node, used to handle animations.</p>
+						</div>
+					</div>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
 						<a name="nextcoords.x-1" class="tsd-anchor"></a>
 						<h3>x</h3>
 						<div class="tsd-signature tsd-kind-icon">x<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = this.coords.x</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in node.ts:56</li>
+								<li>Defined in node.ts:81</li>
 							</ul>
 						</aside>
 					</section>
@@ -350,7 +624,7 @@
 						<div class="tsd-signature tsd-kind-icon">y<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = this.coords.y</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in node.ts:56</li>
+								<li>Defined in node.ts:81</li>
 							</ul>
 						</aside>
 					</section>
@@ -385,10 +659,19 @@
 								<a href="_node_.node.html#color" class="tsd-kind-icon">color</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_node_.node.html#connected" class="tsd-kind-icon">connected</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_node_.node.html#erase" class="tsd-kind-icon">erase</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="_node_.node.html#freeze" class="tsd-kind-icon">freeze</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="_node_.node.html#hardness" class="tsd-kind-icon">hardness</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_node_.node.html#item" class="tsd-kind-icon">item</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="_node_.node.html#point" class="tsd-kind-icon">point</a>
@@ -396,11 +679,26 @@
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="_node_.node.html#type" class="tsd-kind-icon">type</a>
 							</li>
+							<li class=" tsd-kind-accessor tsd-parent-kind-class">
+								<a href="_node_.node.html#connections" class="tsd-kind-icon">connections</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_node_.node.html#puyoshortcode" class="tsd-kind-icon">puyo<wbr>Short<wbr>Code</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_node_.node.html#isblock" class="tsd-kind-icon">is<wbr>Block</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_node_.node.html#iscolored" class="tsd-kind-icon">is<wbr>Colored</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_node_.node.html#iscorrupted" class="tsd-kind-icon">is<wbr>Corrupted</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_node_.node.html#isdumped" class="tsd-kind-icon">is<wbr>Dumped</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_node_.node.html#isempty" class="tsd-kind-icon">is<wbr>Empty</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_node_.node.html#isfrozen" class="tsd-kind-icon">is<wbr>Frozen</a>
@@ -408,8 +706,11 @@
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_node_.node.html#isharddump" class="tsd-kind-icon">is<wbr>Hard<wbr>Dump</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
-								<a href="_node_.node.html#iscolored-1" class="tsd-kind-icon">is<wbr>Colored</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_node_.node.html#isitem" class="tsd-kind-icon">is<wbr>Item</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_node_.node.html#ispower" class="tsd-kind-icon">is<wbr>Power</a>
 							</li>
 							<li class=" tsd-kind-object-literal tsd-parent-kind-class">
 								<a href="_node_.node.html#coords" class="tsd-kind-icon">coords</a>
@@ -434,15 +735,13 @@
 				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
 				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
 			</ul>
 		</div>
 	</div>

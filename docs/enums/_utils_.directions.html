@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>NodeType | quadfall-node-core</title>
+	<title>Directions | quadfall-node-core</title>
 	<meta name="description" content="Documentation for quadfall-node-core">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,26 +56,19 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_node_.html">&quot;node&quot;</a>
+					<a href="../modules/_utils_.html">&quot;utils&quot;</a>
 				</li>
 				<li>
-					<a href="_node_.nodetype.html">NodeType</a>
+					<a href="_utils_.directions.html">Directions</a>
 				</li>
 			</ul>
-			<h1>Enumeration NodeType</h1>
+			<h1>Enumeration Directions</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>Types of Node</p>
-					</div>
-				</div>
-			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
@@ -83,12 +76,10 @@
 						<section class="tsd-index-section ">
 							<h3>Enumeration members</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="_node_.nodetype.html#block" class="tsd-kind-icon">BLOCK</a></li>
-								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="_node_.nodetype.html#color" class="tsd-kind-icon">COLOR</a></li>
-								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="_node_.nodetype.html#corrupt" class="tsd-kind-icon">CORRUPT</a></li>
-								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="_node_.nodetype.html#dump" class="tsd-kind-icon">DUMP</a></li>
-								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="_node_.nodetype.html#none" class="tsd-kind-icon">NONE</a></li>
-								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="_node_.nodetype.html#power" class="tsd-kind-icon">POWER</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="_utils_.directions.html#down" class="tsd-kind-icon">DOWN</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="_utils_.directions.html#left" class="tsd-kind-icon">LEFT</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="_utils_.directions.html#right" class="tsd-kind-icon">RIGHT</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="_utils_.directions.html#up" class="tsd-kind-icon">UP</a></li>
 							</ul>
 						</section>
 					</div>
@@ -97,95 +88,44 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Enumeration members</h2>
 				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
-					<a name="block" class="tsd-anchor"></a>
-					<h3>BLOCK</h3>
-					<div class="tsd-signature tsd-kind-icon">BLOCK<span class="tsd-signature-symbol">:</span></div>
+					<a name="down" class="tsd-anchor"></a>
+					<h3>DOWN</h3>
+					<div class="tsd-signature tsd-kind-icon">DOWN<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = 1 &lt;&lt; 2</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in node.ts:28</li>
+							<li>Defined in utils.ts:9</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Solid barrier that is not affected by gravity.</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
-					<a name="color" class="tsd-anchor"></a>
-					<h3>COLOR</h3>
-					<div class="tsd-signature tsd-kind-icon">COLOR<span class="tsd-signature-symbol">:</span></div>
+					<a name="left" class="tsd-anchor"></a>
+					<h3>LEFT</h3>
+					<div class="tsd-signature tsd-kind-icon">LEFT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = 1 &lt;&lt; 3</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in node.ts:18</li>
+							<li>Defined in utils.ts:10</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Active node with assignable color.</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
-					<a name="corrupt" class="tsd-anchor"></a>
-					<h3>CORRUPT</h3>
-					<div class="tsd-signature tsd-kind-icon">CORRUPT<span class="tsd-signature-symbol">:</span></div>
+					<a name="right" class="tsd-anchor"></a>
+					<h3>RIGHT</h3>
+					<div class="tsd-signature tsd-kind-icon">RIGHT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = 1 &lt;&lt; 1</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in node.ts:26</li>
+							<li>Defined in utils.ts:8</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Heavily damaged node that cannot be fixed or erased.</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
-					<a name="dump" class="tsd-anchor"></a>
-					<h3>DUMP</h3>
-					<div class="tsd-signature tsd-kind-icon">DUMP<span class="tsd-signature-symbol">:</span></div>
+					<a name="up" class="tsd-anchor"></a>
+					<h3>UP</h3>
+					<div class="tsd-signature tsd-kind-icon">UP<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = 1 &lt;&lt; 0</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in node.ts:22</li>
+							<li>Defined in utils.ts:7</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Dumped/garbage node with
-							optional hardness value and points when erased.</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
-					<a name="none" class="tsd-anchor"></a>
-					<h3>NONE</h3>
-					<div class="tsd-signature tsd-kind-icon">NONE<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in node.ts:16</li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>No node.</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
-					<a name="power" class="tsd-anchor"></a>
-					<h3>POWER</h3>
-					<div class="tsd-signature tsd-kind-icon">POWER<span class="tsd-signature-symbol">:</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in node.ts:24</li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Power node which boosts output when erased. May contain items.</p>
-						</div>
-					</div>
 				</section>
 			</section>
 		</div>
@@ -195,10 +135,10 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
-					<li class="current tsd-kind-module">
+					<li class=" tsd-kind-module">
 						<a href="../modules/_node_.html">&quot;node&quot;</a>
 					</li>
-					<li class=" tsd-kind-module">
+					<li class="current tsd-kind-module">
 						<a href="../modules/_utils_.html">&quot;utils&quot;</a>
 					</li>
 				</ul>
@@ -208,32 +148,26 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-enum tsd-parent-kind-module">
-						<a href="_node_.nodetype.html" class="tsd-kind-icon">Node<wbr>Type</a>
+						<a href="_utils_.directions.html" class="tsd-kind-icon">Directions</a>
 						<ul>
 							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
-								<a href="_node_.nodetype.html#block" class="tsd-kind-icon">BLOCK</a>
+								<a href="_utils_.directions.html#down" class="tsd-kind-icon">DOWN</a>
 							</li>
 							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
-								<a href="_node_.nodetype.html#color" class="tsd-kind-icon">COLOR</a>
+								<a href="_utils_.directions.html#left" class="tsd-kind-icon">LEFT</a>
 							</li>
 							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
-								<a href="_node_.nodetype.html#corrupt" class="tsd-kind-icon">CORRUPT</a>
+								<a href="_utils_.directions.html#right" class="tsd-kind-icon">RIGHT</a>
 							</li>
 							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
-								<a href="_node_.nodetype.html#dump" class="tsd-kind-icon">DUMP</a>
-							</li>
-							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
-								<a href="_node_.nodetype.html#none" class="tsd-kind-icon">NONE</a>
-							</li>
-							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
-								<a href="_node_.nodetype.html#power" class="tsd-kind-icon">POWER</a>
+								<a href="_utils_.directions.html#up" class="tsd-kind-icon">UP</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-class tsd-parent-kind-module">
-						<a href="../classes/_node_.node.html" class="tsd-kind-icon">Node</a>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="../interfaces/_utils_.coordinates.html" class="tsd-kind-icon">Coordinates</a>
 					</li>
 				</ul>
 			</nav>
