@@ -190,7 +190,7 @@ export class Node {
    * * Item nodes will be treated as Power (Sun) nodes
    *
    * Refer to
-   * [https://github.com/s2lsoftener/s2-puyosim-core/blob/master/src/Puyo.ts#L1](@S2LSOFTENER's documentation)
+   * [@S2LSOFTENER's documentation](https://github.com/s2lsoftener/s2-puyosim-core/blob/master/src/Puyo.ts#L1)
    * for details.
    *
    * @returns Single character string representing a node.
