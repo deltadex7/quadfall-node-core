@@ -1,5 +1,5 @@
 {
-  "inputFiles": ["./src"],
-  "mode": "modules",
+  "inputFiles": ["./src/index.ts"],
+  "mode": "library",
   "out": "docs"
 }
