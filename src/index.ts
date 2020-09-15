@@ -1,4 +1,4 @@
-import { Coordinates } from "./utils"
-import { NodeType, Node } from "./node"
+import { ICoordinates, IDirections } from "./utils"
+import { NodeType, Node, INode } from "./node"
 
-export { Coordinates, NodeType, Node }
+export { ICoordinates, IDirections, NodeType, Node, INode }

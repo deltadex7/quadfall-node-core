@@ -8,7 +8,7 @@
  * "Node" is Quadfall term for Puyo.
  */
 
-import { Coordinates, Directions } from "./utils"
+import { ICoordinates, IDirections } from "./utils"
 
 /** Types of Node */
 export enum NodeType {
@@ -28,10 +28,64 @@ export enum NodeType {
   BLOCK,
 }
 
+export interface INode {
+  /** Node type. */
+  type: NodeType
+
+  /** Node color.
+   *
+   * Applies only when [[type]] is [[NodeType.COLOR]]
+   *
+   * Common convention follows Puyo Puyo color cycle:
+   * * Red = 0
+   * * Green = 1
+   * * Blue = 2
+   * * Yellow = 3
+   * * Purple = 4
+   *
+   * More colors may be specified independently from here.
+   */
+  color: number
+
+  /** Freeze timer for this node. */
+  freeze: number
+
+  /** Hardness of dumps.
+   *
+   * Effective only when [[type]] is [[NodeType.DUMP]].
+   */
+  hardness: number
+
+  /** Value of node if it's deleted.
+   *
+   * Works like Point Puyo when [[type]] is [[NodeType.DUMP]].
+   */
+  point: number
+
+  /** A mark of node to be removed/erased */
+  erase: boolean
+
+  /** An item associated with the node.
+   *
+   * Effective only when [[type]] is [[NodeType.POWER]]
+   */
+  item: string
+
+  /** Current position of the node. */
+  coords: ICoordinates
+
+  /** Next position of the node, used to handle animations. */
+  nextCoords: ICoordinates
+
+  /** A map of [[Directions]] to connected nodes.
+   */
+  connections: IDirections[]
+}
+
 /**
  * A single unit element representation of Node.
  */
-export class Node {
+export class Node implements INode {
   /** Node type. */
   type: NodeType = NodeType.NONE
 
@@ -75,10 +129,10 @@ export class Node {
   item: string = ""
 
   /** Current position of the node. */
-  coords: Coordinates = { x: 0, y: 0 }
+  coords: ICoordinates = { x: 0, y: 0 }
 
   /** Next position of the node, used to handle animations. */
-  nextCoords: Coordinates = { x: this.coords.x, y: this.coords.y }
+  nextCoords: ICoordinates = { x: this.coords.x, y: this.coords.y }
 
   /** Bitfield that takes [[Directions]] to connected nodes.
    * Not exposed by default.
@@ -90,8 +144,8 @@ export class Node {
    *
    * @returns Is the node type empty?
    */
-  isEmpty(): boolean {
-    return this.type === NodeType.NONE
+  static isEmpty(n: INode): boolean {
+    return n.type === NodeType.NONE
   }
 
   /**
@@ -99,8 +153,8 @@ export class Node {
    *
    * @returns Is the node type a color node?
    */
-  isColored(): boolean {
-    return this.type === NodeType.COLOR
+  static isColored(n: INode): boolean {
+    return n.type === NodeType.COLOR
   }
 
   /**
@@ -108,8 +162,8 @@ export class Node {
    *
    * @returns Is the node type a dump?
    */
-  isDumped(): boolean {
-    return this.type === NodeType.DUMP
+  static isDumped(n: INode): boolean {
+    return n.type === NodeType.DUMP
   }
 
   /**
@@ -117,8 +171,8 @@ export class Node {
    *
    * @returns Is it a dump node and has hardness value above zero?
    */
-  isHardDump(): boolean {
-    return this.isDumped() && this.hardness > 0
+  static isHardDump(n: INode): boolean {
+    return Node.isDumped(n) && n.hardness > 0
   }
 
   /**
@@ -126,8 +180,8 @@ export class Node {
    *
    * @returns Is node's freeze value above zero?
    */
-  isFrozen(): boolean {
-    return this.freeze > 0
+  static isFrozen(n: INode): boolean {
+    return n.freeze > 0
   }
 
   /**
@@ -135,8 +189,8 @@ export class Node {
    *
    * @returns Is the node type corrupt?
    */
-  isCorrupted(): boolean {
-    return this.type === NodeType.CORRUPT
+  static isCorrupted(n: INode): boolean {
+    return n.type === NodeType.CORRUPT
   }
 
   /**
@@ -144,8 +198,8 @@ export class Node {
    *
    * @returns Is the node type a block?
    */
-  isBlock(): boolean {
-    return this.type === NodeType.BLOCK
+  static isBlock(n: INode): boolean {
+    return n.type === NodeType.BLOCK
   }
 
   /**
@@ -153,8 +207,8 @@ export class Node {
    *
    * @returns Is the node type power and has no associated item?
    */
-  isPower(): boolean {
-    return this.type === NodeType.POWER && this.item === ""
+  static isPower(n: INode): boolean {
+    return n.type === NodeType.POWER && n.item === ""
   }
 
   /**
@@ -162,20 +216,20 @@ export class Node {
    *
    * @returns Is the node type power and has any associated item?
    */
-  isItem(): boolean {
-    return this.type === NodeType.POWER && this.item !== ""
+  static isItem(n: INode): boolean {
+    return n.type === NodeType.POWER && n.item !== ""
   }
 
   /** Get a fully mapped direction of where the node connects to. */
-  get connections(): Directions[] {
-    const dirs: Directions[] = []
+  get connections(): IDirections[] {
+    const dirs: IDirections[] = []
 
     // Only connect if it's a color node
-    if (this.isColored()) {
-      if (this.connected & Directions.UP) dirs.push(Directions.UP)
-      if (this.connected & Directions.DOWN) dirs.push(Directions.DOWN)
-      if (this.connected & Directions.LEFT) dirs.push(Directions.LEFT)
-      if (this.connected & Directions.RIGHT) dirs.push(Directions.RIGHT)
+    if (Node.isColored(this)) {
+      if (this.connected & IDirections.UP) dirs.push(IDirections.UP)
+      if (this.connected & IDirections.DOWN) dirs.push(IDirections.DOWN)
+      if (this.connected & IDirections.LEFT) dirs.push(IDirections.LEFT)
+      if (this.connected & IDirections.RIGHT) dirs.push(IDirections.RIGHT)
     }
 
     return dirs
@@ -185,8 +239,10 @@ export class Node {
    *
    * @param val Map of directions
    */
-  set connections(val: Directions[]) {
-    val.map((dir) => (this.connected |= dir))
+  set connections(val: IDirections[]) {
+    let cons: number = 0
+    val.map((dir) => (cons |= dir))
+    this.connected = cons
   }
 
   /**
@@ -202,7 +258,7 @@ export class Node {
    *
    * @returns Single character string representing a node.
    */
-  get puyoShortCode(): string {
+  get shortCodePuyo(): string {
     switch (this.type) {
       case NodeType.COLOR:
         switch (this.color) {
@@ -232,6 +288,57 @@ export class Node {
       case NodeType.NONE:
       default:
         return "0"
+    }
+  }
+
+  set shortCodePuyo(val: string) {
+    // Ensures that the first character is read rather than the whole string
+    switch (val.charAt(0)) {
+      case "R":
+        this.type = NodeType.COLOR
+        this.color = 0
+        break
+      case "G":
+        this.type = NodeType.COLOR
+        this.color = 1
+        break
+      case "B":
+        this.type = NodeType.COLOR
+        this.color = 2
+        break
+      case "Y":
+        this.type = NodeType.COLOR
+        this.color = 3
+        break
+      case "P":
+        this.type = NodeType.COLOR
+        this.color = 4
+        break
+      case "J":
+        this.type = NodeType.DUMP
+        this.hardness = 0
+        break
+      case "H":
+        this.type = NodeType.DUMP
+        this.hardness = 1
+        break
+      case "N":
+        this.type = NodeType.DUMP
+        this.hardness = 0
+        this.point = 50 // default value of Point Puyo
+        break
+      case "T":
+        this.type = NodeType.CORRUPT
+        break
+      case "S":
+        this.type = NodeType.POWER
+        break
+      case "L":
+        this.type = NodeType.BLOCK
+        break
+      case "0":
+      default:
+        this.type = NodeType.NONE
     }
   }
 }
