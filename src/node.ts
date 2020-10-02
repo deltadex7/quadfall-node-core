@@ -10,6 +10,15 @@
 
 import { ICoordinates, IDirections } from "./utils"
 
+/**
+ * Single-character node value under Puyo Puyo convention.
+ *
+ * Refer to
+ * [@S2LSOFTENER's documentation](https://github.com/s2lsoftener/s2-puyosim-core/blob/master/src/Puyo.ts#L1)
+ * for details.
+ */
+declare type ShortCodePuyo = "R" | "G" | "B" | "Y" | "P" | "0" | "H" | "N" | "J" | "S" | "L" | "T"
+
 /** Types of Node */
 export enum NodeType {
   /** No node. */
@@ -26,6 +35,19 @@ export enum NodeType {
   CORRUPT,
   /** Solid barrier that is not affected by gravity. */
   BLOCK,
+}
+
+export const DefaultNode: INode = {
+  type: NodeType.COLOR,
+  color: 0,
+  freeze: 0,
+  hardness: 0,
+  point: 0,
+  erase: false,
+  item: "",
+  coords: { x: 0, y: 0 },
+  nextCoords: { x: 0, y: 0 },
+  connections: [],
 }
 
 export interface INode {
@@ -83,62 +105,9 @@ export interface INode {
 }
 
 /**
- * A single unit element representation of Node.
+ * A helper class to help manage [[INode]].
  */
-export class Node implements INode {
-  /** Node type. */
-  type: NodeType = NodeType.NONE
-
-  /** Node color.
-   *
-   * Applies only when [[type]] is [[NodeType.COLOR]]
-   *
-   * Common convention follows Puyo Puyo color cycle:
-   * * Red = 0
-   * * Green = 1
-   * * Blue = 2
-   * * Yellow = 3
-   * * Purple = 4
-   *
-   * More colors may be specified independently from here.
-   */
-  color: number = 0
-
-  /** Freeze timer for this node. */
-  freeze: number = 0
-
-  /** Hardness of dumps.
-   *
-   * Effective only when [[type]] is [[NodeType.DUMP]].
-   */
-  hardness: number = 0
-
-  /** Value of node if it's deleted.
-   *
-   * Works like Point Puyo when [[type]] is [[NodeType.DUMP]].
-   */
-  point: number = 10
-
-  /** A mark of node to be removed/erased */
-  erase: boolean = false
-
-  /** An item associated with the node.
-   *
-   * Effective only when [[type]] is [[NodeType.POWER]]
-   */
-  item: string = ""
-
-  /** Current position of the node. */
-  coords: ICoordinates = { x: 0, y: 0 }
-
-  /** Next position of the node, used to handle animations. */
-  nextCoords: ICoordinates = { x: this.coords.x, y: this.coords.y }
-
-  /** Bitfield that takes [[Directions]] to connected nodes.
-   * Not exposed by default.
-   */
-  private connected: number = 0
-
+export class Node {
   /**
    * Check if the node is empty.
    *
@@ -221,47 +190,28 @@ export class Node implements INode {
   }
 
   /** Get a fully mapped direction of where the node connects to. */
-  get connections(): IDirections[] {
-    const dirs: IDirections[] = []
-
+  static getConnections(n: INode): IDirections[] {
     // Only connect if it's a color node
-    if (Node.isColored(this)) {
-      if (this.connected & IDirections.UP) dirs.push(IDirections.UP)
-      if (this.connected & IDirections.DOWN) dirs.push(IDirections.DOWN)
-      if (this.connected & IDirections.LEFT) dirs.push(IDirections.LEFT)
-      if (this.connected & IDirections.RIGHT) dirs.push(IDirections.RIGHT)
+    if (Node.isColored(n)) {
+      return n.connections
     }
 
-    return dirs
-  }
-
-  /** Set a direction map of where the node connects to.
-   *
-   * @param val Map of directions
-   */
-  set connections(val: IDirections[]) {
-    let cons: number = 0
-    val.map((dir) => (cons |= dir))
-    this.connected = cons
+    return []
   }
 
   /**
-   * Single-character node value under Puyo Puyo convention.
+   * Gets the shortcode compatible with Puyo Puyo
    *
    * There are limitations when using this:
    * * Only 5 colors are supported.
-   * * Item nodes will be treated as Power (Sun) nodes
+   * * Item node will be treated as Power node (Sun Puyo)
    *
-   * Refer to
-   * [@S2LSOFTENER's documentation](https://github.com/s2lsoftener/s2-puyosim-core/blob/master/src/Puyo.ts#L1)
-   * for details.
-   *
-   * @returns Single character string representing a node.
+   * @returns Single character string representing a node in Puyo standard.
    */
-  get shortCodePuyo(): string {
-    switch (this.type) {
+  static getShortCodePuyo(n: INode): ShortCodePuyo {
+    switch (n.type) {
       case NodeType.COLOR:
-        switch (this.color) {
+        switch (n.color) {
           case 0:
             return "R"
           case 1:
@@ -276,8 +226,8 @@ export class Node implements INode {
             return "0"
         }
       case NodeType.DUMP:
-        if (this.hardness > 0) return "H"
-        else if (this.point > 0) return "N"
+        if (n.hardness > 0) return "H"
+        else if (n.point > 0) return "N"
         else return "J"
       case NodeType.POWER:
         return "S"
@@ -291,54 +241,54 @@ export class Node implements INode {
     }
   }
 
-  set shortCodePuyo(val: string) {
+  static setShortCodePuyo(n: INode, val: string): void {
     // Ensures that the first character is read rather than the whole string
     switch (val.charAt(0)) {
       case "R":
-        this.type = NodeType.COLOR
-        this.color = 0
+        n.type = NodeType.COLOR
+        n.color = 0
         break
       case "G":
-        this.type = NodeType.COLOR
-        this.color = 1
+        n.type = NodeType.COLOR
+        n.color = 1
         break
       case "B":
-        this.type = NodeType.COLOR
-        this.color = 2
+        n.type = NodeType.COLOR
+        n.color = 2
         break
       case "Y":
-        this.type = NodeType.COLOR
-        this.color = 3
+        n.type = NodeType.COLOR
+        n.color = 3
         break
       case "P":
-        this.type = NodeType.COLOR
-        this.color = 4
+        n.type = NodeType.COLOR
+        n.color = 4
         break
       case "J":
-        this.type = NodeType.DUMP
-        this.hardness = 0
+        n.type = NodeType.DUMP
+        n.hardness = 0
         break
       case "H":
-        this.type = NodeType.DUMP
-        this.hardness = 1
+        n.type = NodeType.DUMP
+        n.hardness = 1
         break
       case "N":
-        this.type = NodeType.DUMP
-        this.hardness = 0
-        this.point = 50 // default value of Point Puyo
+        n.type = NodeType.DUMP
+        n.hardness = 0
+        n.point = 50 // default value of Point Puyo
         break
       case "T":
-        this.type = NodeType.CORRUPT
+        n.type = NodeType.CORRUPT
         break
       case "S":
-        this.type = NodeType.POWER
+        n.type = NodeType.POWER
         break
       case "L":
-        this.type = NodeType.BLOCK
+        n.type = NodeType.BLOCK
         break
       case "0":
       default:
-        this.type = NodeType.NONE
+        n.type = NodeType.NONE
     }
   }
 }
